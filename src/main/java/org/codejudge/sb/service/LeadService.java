@@ -9,16 +9,16 @@ import org.codejudge.sb.model.Lead;
 
 public interface LeadService {
 
-	Lead getLead(String id) throws CustomException, CustomException404;
+    Lead getLead(String id) throws CustomException, CustomException404;
 
-	boolean checkEmailAlreadyPresent(String email);
+    boolean checkEmailAlreadyPresent(String email);
 
-	Lead saveLead(Lead lead) throws CustomException;
+    Lead saveLead(Lead lead) throws CustomException;
 
-	void deleteLead(String id) throws CustomException;
+    void deleteLead(String id) throws CustomException;
 
-	void markLeader(String id, @Valid MarkModel markModel) throws CustomException;
+    void markLeader(String id, @Valid MarkModel markModel) throws CustomException;
 
-	void updateLead(String id, Lead lead) throws CustomException;
+    void updateLead(String id, Lead lead) throws CustomException;
 
 }

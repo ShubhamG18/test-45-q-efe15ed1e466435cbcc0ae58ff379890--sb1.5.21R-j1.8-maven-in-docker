@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class MarkModel {
 
-	@NotNull
-	private String communication;
+    @NotNull
+    private String communication;
 }
-	

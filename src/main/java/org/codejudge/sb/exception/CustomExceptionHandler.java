@@ -14,23 +14,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler(CustomException404.class)
-	public final ResponseEntity<Object> CustomException404(CustomException404 ex, WebRequest request) {
-		ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
-		return new ResponseEntity(error, HttpStatus.NOT_FOUND);
-	}
+    @ExceptionHandler(CustomException404.class)
+    public final ResponseEntity<Object> CustomException404(CustomException404 ex, WebRequest request) {
+        ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
+        return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+    }
 
-	@ExceptionHandler(CustomException.class)
-	public final ResponseEntity<Object> handleUserNotFoundException(CustomException ex, WebRequest request) {
-		ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
-		return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
-	}
+    @ExceptionHandler(CustomException.class)
+    public final ResponseEntity<Object> handleUserNotFoundException(CustomException ex, WebRequest request) {
+        ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
+        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+    }
 
-	@Override
-	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-			HttpHeaders headers, HttpStatus status, WebRequest request) {
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+            HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-		ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
-		return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
-	}
+        ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
+        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+    }
 }

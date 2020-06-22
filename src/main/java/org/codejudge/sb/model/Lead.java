@@ -18,49 +18,49 @@ import lombok.Data;
 @JsonInclude(Include.NON_NULL)
 public class Lead {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-	@NotNull
-	@Column(name = "first_name")
-	@JsonProperty("first_name")
-	private String firstName;
+    @NotNull
+    @Column(name = "first_name")
+    @JsonProperty("first_name")
+    private String firstName;
 
-	@NotNull
-	@JsonProperty("last_name")
-	@Column(name = "last_name")
-	private String lastName;
+    @NotNull
+    @JsonProperty("last_name")
+    @Column(name = "last_name")
+    private String lastName;
 
-	@NotNull
-	@Column
-	private Long mobile;
+    @NotNull
+    @Column
+    private Long mobile;
 
-	@Column
-	@NotNull
-	private String email;
+    @Column
+    @NotNull
+    private String email;
 
-	@NotNull
-	@JsonProperty("location_type")
-	@Column(name = "location_type")
-	private String locationType;
+    @NotNull
+    @JsonProperty("location_type")
+    @Column(name = "location_type")
+    private String locationType;
 
-	@NotNull
-	@JsonProperty("location_string")
-	@Column(name = "location_string")
-	private String locationString;
+    @NotNull
+    @JsonProperty("location_string")
+    @Column(name = "location_string")
+    private String locationString;
 
-	@Column
-	private String status;
+    @Column
+    private String status;
 
-	@Column
-	private String communication;
+    @Column
+    private String communication;
 
-	@Override
-	public String toString() {
-		return "Lead [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile=" + mobile
-				+ ", email=" + email + ", locationType=" + locationType + ", locationString=" + locationString
-				+ ", status=" + status + ", communication=" + communication + "]";
-	}
+    @Override
+    public String toString() {
+        return "Lead [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile=" + mobile
+                + ", email=" + email + ", locationType=" + locationType + ", locationString=" + locationString
+                + ", status=" + status + ", communication=" + communication + "]";
+    }
 
 }

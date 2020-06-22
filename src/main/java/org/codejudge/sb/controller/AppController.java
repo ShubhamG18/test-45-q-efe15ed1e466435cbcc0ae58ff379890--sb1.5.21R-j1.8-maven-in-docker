@@ -30,53 +30,53 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AppController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AppController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AppController.class);
 
-	@ApiOperation("This is the hello world api")
-	@GetMapping("/hello")
-	public String hello() {
-		return "Hello World!!";
-	}
+    @ApiOperation("This is the hello world api")
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World!!";
+    }
 
-	@Autowired
-	private LeadService leadService;
+    @Autowired
+    private LeadService leadService;
 
-	@GetMapping(value = { "/api/leads", "/api/leads/{id}" })
-	public ResponseEntity<Object> fetchLead(@PathVariable(required = false, value = "id") String id)
-			throws CustomException, CustomException404 {
-		Lead lead = leadService.getLead(id);
-		return new ResponseEntity<>(lead, HttpStatus.OK);
-	}
+    @GetMapping(value = { "/api/leads", "/api/leads/{id}" })
+    public ResponseEntity<Object> fetchLead(@PathVariable(required = false, value = "id") String id)
+            throws CustomException, CustomException404 {
+        Lead lead = leadService.getLead(id);
+        return new ResponseEntity<>(lead, HttpStatus.OK);
+    }
 
-	@PostMapping("/api/leads/")
-	public ResponseEntity<Object> saveLead(@Valid @RequestBody Lead lead) throws CustomException {
-		Lead lead2 = leadService.saveLead(lead);
-		return new ResponseEntity<>(lead2, HttpStatus.CREATED);
-	}
+    @PostMapping("/api/leads/")
+    public ResponseEntity<Object> saveLead(@Valid @RequestBody Lead lead) throws CustomException {
+        Lead lead2 = leadService.saveLead(lead);
+        return new ResponseEntity<>(lead2, HttpStatus.CREATED);
+    }
 
-	@PutMapping(value = { "/api/leads", "/api/leads/{id}" })
-	public ResponseEntity<Object> updateLead(@PathVariable(required = false, value = "id") String id,
-			@Valid @RequestBody Lead lead) throws CustomException {
-		leadService.updateLead(id, lead);
-		ErrorResponseDto erd = new ErrorResponseDto("sucesss");
-		return new ResponseEntity<>(erd, HttpStatus.ACCEPTED);
-	}
+    @PutMapping(value = { "/api/leads", "/api/leads/{id}" })
+    public ResponseEntity<Object> updateLead(@PathVariable(required = false, value = "id") String id,
+            @Valid @RequestBody Lead lead) throws CustomException {
+        leadService.updateLead(id, lead);
+        ErrorResponseDto erd = new ErrorResponseDto("sucesss");
+        return new ResponseEntity<>(erd, HttpStatus.ACCEPTED);
+    }
 
-	@DeleteMapping(value = { "/api/leads", "/api/leads/{id}" })
-	public ResponseEntity<Object> deleteLead(@PathVariable(required = false, value = "id") String id)
-			throws CustomException {
-		leadService.deleteLead(id);
-		ErrorResponseDto erd = new ErrorResponseDto("sucesss");
-		return new ResponseEntity<>(erd, HttpStatus.OK);
-	}
+    @DeleteMapping(value = { "/api/leads", "/api/leads/{id}" })
+    public ResponseEntity<Object> deleteLead(@PathVariable(required = false, value = "id") String id)
+            throws CustomException {
+        leadService.deleteLead(id);
+        ErrorResponseDto erd = new ErrorResponseDto("sucesss");
+        return new ResponseEntity<>(erd, HttpStatus.OK);
+    }
 
-	@PutMapping(value = { "/api/mark_lead", "/api/mark_lead/{id}" })
-	public ResponseEntity<ErrorResponseDto> markLead(@PathVariable(required = false, value = "id") String id,
-			@Valid @RequestBody MarkModel markModel) throws CustomException {
-		leadService.markLeader(id, markModel);
-		ErrorResponseDto erd = new ErrorResponseDto("Contacted");
-		erd.setCommunication(markModel.getCommunication());
-		return new ResponseEntity<>(erd, HttpStatus.ACCEPTED);
-	}
+    @PutMapping(value = { "/api/mark_lead", "/api/mark_lead/{id}" })
+    public ResponseEntity<ErrorResponseDto> markLead(@PathVariable(required = false, value = "id") String id,
+            @Valid @RequestBody MarkModel markModel) throws CustomException {
+        leadService.markLeader(id, markModel);
+        ErrorResponseDto erd = new ErrorResponseDto("Contacted");
+        erd.setCommunication(markModel.getCommunication());
+        return new ResponseEntity<>(erd, HttpStatus.ACCEPTED);
+    }
 
 }
