@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
-import org.codejudge.sb.controller.AppController;
 import org.codejudge.sb.dto.MarkModel;
 import org.codejudge.sb.exception.CustomException;
 import org.codejudge.sb.exception.CustomException404;
@@ -15,6 +14,7 @@ import org.codejudge.sb.service.LeadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -88,13 +88,13 @@ public class LeadServiceImpl implements LeadService {
         }
     }
 
-    private int parseId(String id) throws CustomException {
+    private int parseId(String id) {
         try {
             int leadId = Integer.parseInt(id);
             return leadId;
-        } catch (org.springframework.expression.ParseException e) {
+        } catch (ParseException e) {
             LOGGER.error(e.toString());
-            throw new CustomException();
+            throw e;
         }
     }
 

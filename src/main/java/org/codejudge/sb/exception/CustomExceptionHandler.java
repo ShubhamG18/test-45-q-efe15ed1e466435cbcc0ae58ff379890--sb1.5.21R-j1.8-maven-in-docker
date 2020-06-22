@@ -1,6 +1,7 @@
 package org.codejudge.sb.exception;
 
 import org.codejudge.sb.dto.ErrorResponseDto;
+import org.springframework.expression.ParseException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,12 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(CustomException.class)
     public final ResponseEntity<Object> handleUserNotFoundException(CustomException ex, WebRequest request) {
+        ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
+        return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ParseException.class)
+    public final ResponseEntity<Object> parsingException(CustomException ex, WebRequest request) {
         ErrorResponseDto error = new ErrorResponseDto("failure", "reason");
         return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
     }
