@@ -1,7 +1,6 @@
 package org.codejudge.sb.service.impl;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -40,7 +39,7 @@ public class LeadServiceImpl implements LeadService {
 
 	@Override
 	public Lead saveLead(Lead lead) throws CustomException {
-		if (mobiles.contains(lead.getMobile()) || lead.getEmail().equals("") || emails.contains(lead.getEmail())) {
+		if (mobiles.contains(lead.getMobile()) || "".equals(lead.getEmail()) || emails.contains(lead.getEmail())) {
 			throw new CustomException();
 		}
 		emails.add(lead.getEmail());
@@ -88,7 +87,7 @@ public class LeadServiceImpl implements LeadService {
 		try {
 			int leadId = Integer.parseInt(id);
 			return leadId;
-		} catch (Exception e) {
+		} catch (org.springframework.expression.ParseException e) {
 			throw new CustomException();
 		}
 	}

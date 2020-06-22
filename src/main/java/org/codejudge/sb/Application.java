@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"org.codejudge.sb"})
+@ComponentScan({ "org.codejudge.sb" })
 @Slf4j
 public class Application {
 

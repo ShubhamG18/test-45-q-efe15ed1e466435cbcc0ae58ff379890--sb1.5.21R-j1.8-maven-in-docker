@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AppController {
 
-	Logger logger = LoggerFactory.getLogger(AppController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AppController.class);
 
 	@ApiOperation("This is the hello world api")
 	@GetMapping("/hello")
